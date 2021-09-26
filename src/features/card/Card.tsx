@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     height: 135,
     position: 'relative',
     margin: 5,
-    fontSize: '.8rem',
+    fontSize: '1rem',
     borderRadius: 5,
   },
   preview: {
@@ -18,10 +18,20 @@ const useStyles = makeStyles((theme) => ({
   title: {
     position: 'absolute',
     width: '100%',
+    height: 32,
+    background: 'rgba(0, 0, 0, 0.4)',
+    right: 0,
+    bottom: 0,
+    display: 'flex',
+    justifyContent: 'center',
+    color: 'white',
+    zIndex: 1,
+    alignItems: 'center',
+  },
+  titleText: {
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
-    top: '85%',
   },
   folderIcon: {
     width: '100%',
@@ -39,10 +49,13 @@ export const Card = ({ preview, name }: { preview: string; name: string }) => {
         backgroundImage: `url(${preview})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+        overflow: 'hidden',
       }}
     >
       <div className={s.preview}>{!preview && <FolderIcon className={s.folderIcon} />}</div>
-      <div className={s.title}>{name}</div>
+      <div className={s.title}>
+        <span className={s.titleText}>{name}</span>
+      </div>
     </div>
   );
 };
